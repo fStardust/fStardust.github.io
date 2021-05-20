@@ -14,11 +14,11 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="编程学习, 读书笔记, 自娱小说">
+  <meta name="description" content="通过Java归档文件文件处理跟文件夹处理有很多相似之处，可以封装成一个方法。">
   <meta name="author" content="fStardust">
   <meta name="keywords" content="编程学习, 读书笔记, 自娱小说">
   
-  <title>Hello World - fStarduat</title>
+  <title>fStarduat</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
@@ -158,12 +158,12 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('/img/default.png') no-repeat center center;
+         style="background: url('/img/post_banner.jpg%20--%20%E6%96%87%E7%AB%A0%E9%A1%B5%E9%A1%B6%E9%83%A8%E5%A4%A7%E5%9B%BE') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="Hello World">
+            <span class="h2" id="subtitle" title="">
               
             </span>
 
@@ -173,8 +173,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-05-11 20:00" pubdate>
-        2021年5月11日 晚上
+      <time datetime="2021-05-20 11:08" pubdate>
+        2021年5月20日 上午
       </time>
     </span>
   
@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      75 字
+      637 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      1
+      8
        分钟
     </span>
   
@@ -225,22 +225,35 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Hello World</h1>
+            <h1 style="display: none"></h1>
             
             <div class="markdown-body">
-              <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure>
+              <h1 id="通过Java归档文件"><a href="#通过Java归档文件" class="headerlink" title="通过Java归档文件"></a>通过<code>Java</code>归档文件</h1><p>文件处理跟文件夹处理有很多相似之处，可以封装成一个方法。</p>
+<span id="more"></span>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure>
+<h2 id="文件归档分析"><a href="#文件归档分析" class="headerlink" title="文件归档分析"></a>文件归档分析</h2><h4 id="文件归档图示："><a href="#文件归档图示：" class="headerlink" title="文件归档图示："></a>文件归档图示：</h4><p><img src="https://i.loli.net/2021/05/20/elr43C5nKIXhfWQ.png" srcset="/img/loading.gif" lazyload alt="原始情况"></p>
+<p><img src="https://i.loli.net/2021/05/20/Kf8lHPaUxvhuBD9.png" srcset="/img/loading.gif" lazyload alt="最终情况"></p>
+<h4 id="步骤："><a href="#步骤：" class="headerlink" title="步骤："></a>步骤：</h4><ol>
+<li><p>获取对应当前文件的所有子文件和子文件夹<code>list</code> or <code>listFiles</code></p>
+</li>
+<li><p>遍历判断是普通文件还是文件夹<code>isFile</code> or <code>isDirctory</code></p>
+</li>
+<li><p>分门别类处理</p>
+<p>3.1 文件处理</p>
+<p>​    3.1.1 获取文件后缀名 <code>substring lastindexOf</code></p>
+<p>​    3.1.2 创建对应当前文件后缀名的全大写文件夹</p>
+<p>​    3.1.3 移动文件到指定文件夹</p>
+</li>
+</ol>
+<p>​    3.2 文件夹处理</p>
+<p>​        3.2.1 创建<code>subDir</code>文件夹</p>
+<p>​        3.2.2 移动文件夹到<code>subDir</code>下</p>
+<p>3.1.2、3.1.3、3.2.1、3.2.2步骤相似，可以封装成一个方法。</p>
+<h4 id=""><a href="#" class="headerlink" title=""></a></h4><h2 id="进阶"><a href="#进阶" class="headerlink" title="进阶"></a>进阶</h2><p>实现基本功能后，注意到再次执行会将归档后的所有文件都纳入新的<code>subDir</code>文件夹中。</p>
+<p>解决：</p>
+<p>​    首次归档后，添加一个<code>.lock</code>文件标记。并添加判断，若有该文件则视为已归档，不进行操作。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.fs.e_file;<br><br><span class="hljs-keyword">import</span> java.io.File;<br><span class="hljs-keyword">import</span> java.io.IOException;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 文件归档</span><br><span class="hljs-comment"> * 	1. 获取对应当前文件的所有子文件和子文件夹list or listFiles</span><br><span class="hljs-comment"> * 	2. 遍历判断是普通文件还是文件夹isFile or isDirctory</span><br><span class="hljs-comment"> * 	3. 分门别类处理</span><br><span class="hljs-comment"> * 		3.1 文件处理</span><br><span class="hljs-comment"> * 			3.1.1 获取文件后缀名 substring lastindexOf</span><br><span class="hljs-comment"> * 			3.1.2 创建对应当前文件后缀名的全大写文件夹</span><br><span class="hljs-comment"> * 			3.1.3 移动文件到指定文件夹</span><br><span class="hljs-comment"> * 		3.2 文件夹处理</span><br><span class="hljs-comment"> * 			3.2.1 创建subDir文件夹</span><br><span class="hljs-comment"> * 			3.2.2 移动文件夹到subDir下</span><br><span class="hljs-comment"> * </span><br><span class="hljs-comment"> * <span class="hljs-doctag">@author</span> fStardust</span><br><span class="hljs-comment"> *</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CollatFile</span> </span>&#123;<br>	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> IOException </span>&#123;<br>		<span class="hljs-comment">// 目标文件夹的File类对象</span><br>		File file = <span class="hljs-keyword">new</span> File(<span class="hljs-string">&quot;G:\\1\\c&quot;</span>);<br>		<br>		<span class="hljs-comment">// 需要创建的文件夹</span><br>		File toBeCreateDir = <span class="hljs-keyword">null</span>;<br>		<br>		<span class="hljs-comment">// 判断是否是文件夹</span><br>		<span class="hljs-keyword">if</span> (!file.isDirectory()) &#123;<br>			<span class="hljs-keyword">return</span>;<br>		&#125;<br>		<br>		<span class="hljs-comment">// 当前文件夹已经归档完成，无需再次归档</span><br>		<span class="hljs-keyword">if</span>(<span class="hljs-keyword">new</span> File(file, <span class="hljs-string">&quot;1.lock&quot;</span>).exists()) &#123;<br>			System.out.println(<span class="hljs-string">&quot;已归档文件&quot;</span>);<br>			<span class="hljs-keyword">return</span>;<br>		&#125;<br>		<br>		<span class="hljs-comment">// 当前文件夹下所有子文件和子文件夹的File类对象组</span><br>		File[] listFiles = file.listFiles();<br>		<br>		<span class="hljs-comment">// 遍历File类对象数组</span><br>		<span class="hljs-keyword">for</span> (File srcFile : listFiles) &#123;<br>			<span class="hljs-comment">// 如果是普通文件。获取文件后缀名</span><br>			<span class="hljs-keyword">if</span> (srcFile.isFile()) &#123;<br>				<br>				String fileName = srcFile.getName();<br>				String upperSuffix = fileName.substring(fileName.lastIndexOf(<span class="hljs-string">&#x27;.&#x27;</span>) + <span class="hljs-number">1</span>)<br>						.toUpperCase();<br>				toBeCreateDir = <span class="hljs-keyword">new</span> File(file, upperSuffix);<br>				<br>			&#125; <span class="hljs-keyword">else</span> &#123;<br>				toBeCreateDir = <span class="hljs-keyword">new</span> File(file, <span class="hljs-string">&quot;subDir&quot;</span>);<br>			&#125;<br>			<br>			<span class="hljs-comment">// 创建文件夹</span><br>			toBeCreateDir.mkdir();<br>			<br>			<span class="hljs-comment">// 移动文件或文件夹</span><br>			srcFile.renameTo(<span class="hljs-keyword">new</span> File(toBeCreateDir, srcFile.getName()));<br>		&#125;<br>		<br>		<span class="hljs-comment">// 创建一个锁文件</span><br>		<span class="hljs-keyword">new</span> File(file, <span class="hljs-string">&quot;1.lock&quot;</span>).createNewFile();<br>	&#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
 
             </div>
             <hr>
@@ -261,15 +274,21 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2021/05/20/bolg%E6%A8%A1%E6%9D%BF/">
+                      <a href="/2021/05/21/MyArrayList/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile"></span>
+                        <span class="hidden-mobile">MyArrayList</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
                   </article>
                   <article class="post-next col-6">
                     
+                    
+                      <a href="/2021/05/11/hello-world/">
+                        <span class="hidden-mobile">Hello World</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
                     
                   </article>
                 </div>
