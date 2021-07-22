@@ -14,11 +14,11 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="文件处理跟文件夹处理有很多相似之处，可以封装成一个方法。🪂">
+  <meta name="description" content="本文参加了B站的 [刘慈欣喊你写科幻-专栏征文活动]">
   <meta name="author" content="fStardust">
-  <meta name="keywords" content="Java,文件操作,实用">
+  <meta name="keywords" content="灾难,传承,希望">
   
-  <title>通过Java归档文件 - fStarduat</title>
+  <title>巨变 - fStarduat</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
@@ -158,12 +158,12 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('/img/post_banner.jpg%20--%20%E6%96%87%E7%AB%A0%E9%A1%B5%E9%A1%B6%E9%83%A8%E5%A4%A7%E5%9B%BE') no-repeat center center;
+         style="background: url('/img/%E6%97%B6%E9%97%B4%E6%B5%B7.png') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="通过Java归档文件">
+            <span class="h2" id="subtitle" title="巨变">
               
             </span>
 
@@ -173,8 +173,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-05-25 09:55" pubdate>
-        2021年5月25日 上午
+      <time datetime="2021-06-16 16:54" pubdate>
+        2021年6月16日 下午
       </time>
     </span>
   
@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      637 字
+      2.6k 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      8
+      26
        分钟
     </span>
   
@@ -225,35 +225,69 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">通过Java归档文件</h1>
+            <h1 style="display: none">巨变</h1>
             
             <div class="markdown-body">
-              <p>文件处理跟文件夹处理有很多相似之处，可以封装成一个方法。🪂</p>
+              <p>本文参加了B站的 [<a target="_blank" rel="noopener" href="https://www.bilibili.com/blackboard/activity-sci-fi.html">刘慈欣喊你写科幻-专栏征文活动</a>]</p>
 <span id="more"></span>
 
-<h1 id="通过Java归档文件"><a href="#通过Java归档文件" class="headerlink" title="通过Java归档文件"></a>通过<code>Java</code>归档文件</h1><h2 id="文件归档分析"><a href="#文件归档分析" class="headerlink" title="文件归档分析"></a>文件归档分析</h2><h4 id="文件归档图示："><a href="#文件归档图示：" class="headerlink" title="文件归档图示："></a>文件归档图示：</h4><p><img src="https://i.loli.net/2021/05/20/elr43C5nKIXhfWQ.png" srcset="/img/loading.gif" lazyload alt="原始情况"></p>
-<p><img src="https://i.loli.net/2021/05/20/Kf8lHPaUxvhuBD9.png" srcset="/img/loading.gif" lazyload alt="最终情况"></p>
-<h4 id="步骤："><a href="#步骤：" class="headerlink" title="步骤："></a>步骤：</h4><ol>
-<li><p>获取对应当前文件的所有子文件和子文件夹<code>list</code> or <code>listFiles</code></p>
-</li>
-<li><p>遍历判断是普通文件还是文件夹<code>isFile</code> or <code>isDirctory</code></p>
-</li>
-<li><p>分门别类处理</p>
-<p>3.1 文件处理</p>
-<p>​    3.1.1 获取文件后缀名 <code>substring lastindexOf</code></p>
-<p>​    3.1.2 创建对应当前文件后缀名的全大写文件夹</p>
-<p>​    3.1.3 移动文件到指定文件夹</p>
-</li>
-</ol>
-<p>​    3.2 文件夹处理</p>
-<p>​        3.2.1 创建<code>subDir</code>文件夹</p>
-<p>​        3.2.2 移动文件夹到<code>subDir</code>下</p>
-<p>3.1.2、3.1.3、3.2.1、3.2.2步骤相似，可以封装成一个方法。</p>
-<h4 id=""><a href="#" class="headerlink" title=""></a></h4><h2 id="进阶"><a href="#进阶" class="headerlink" title="进阶"></a>进阶</h2><p>实现基本功能后，注意到再次执行会将归档后的所有文件都纳入新的<code>subDir</code>文件夹中。</p>
-<p>解决：</p>
-<p>​    首次归档后，添加一个<code>.lock</code>文件标记。并添加判断，若有该文件则视为已归档，不进行操作。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.fs.e_file;<br><br><span class="hljs-keyword">import</span> java.io.File;<br><span class="hljs-keyword">import</span> java.io.IOException;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 文件归档</span><br><span class="hljs-comment"> * 	1. 获取对应当前文件的所有子文件和子文件夹list or listFiles</span><br><span class="hljs-comment"> * 	2. 遍历判断是普通文件还是文件夹isFile or isDirctory</span><br><span class="hljs-comment"> * 	3. 分门别类处理</span><br><span class="hljs-comment"> * 		3.1 文件处理</span><br><span class="hljs-comment"> * 			3.1.1 获取文件后缀名 substring lastindexOf</span><br><span class="hljs-comment"> * 			3.1.2 创建对应当前文件后缀名的全大写文件夹</span><br><span class="hljs-comment"> * 			3.1.3 移动文件到指定文件夹</span><br><span class="hljs-comment"> * 		3.2 文件夹处理</span><br><span class="hljs-comment"> * 			3.2.1 创建subDir文件夹</span><br><span class="hljs-comment"> * 			3.2.2 移动文件夹到subDir下</span><br><span class="hljs-comment"> * </span><br><span class="hljs-comment"> * <span class="hljs-doctag">@author</span> fStardust</span><br><span class="hljs-comment"> *</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CollatFile</span> </span>&#123;<br>	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> IOException </span>&#123;<br>		<span class="hljs-comment">// 目标文件夹的File类对象</span><br>		File file = <span class="hljs-keyword">new</span> File(<span class="hljs-string">&quot;G:\\1\\c&quot;</span>);<br>		<br>		<span class="hljs-comment">// 需要创建的文件夹</span><br>		File toBeCreateDir = <span class="hljs-keyword">null</span>;<br>		<br>		<span class="hljs-comment">// 判断是否是文件夹</span><br>		<span class="hljs-keyword">if</span> (!file.isDirectory()) &#123;<br>			<span class="hljs-keyword">return</span>;<br>		&#125;<br>		<br>		<span class="hljs-comment">// 当前文件夹已经归档完成，无需再次归档</span><br>		<span class="hljs-keyword">if</span>(<span class="hljs-keyword">new</span> File(file, <span class="hljs-string">&quot;1.lock&quot;</span>).exists()) &#123;<br>			System.out.println(<span class="hljs-string">&quot;已归档文件&quot;</span>);<br>			<span class="hljs-keyword">return</span>;<br>		&#125;<br>		<br>		<span class="hljs-comment">// 当前文件夹下所有子文件和子文件夹的File类对象组</span><br>		File[] listFiles = file.listFiles();<br>		<br>		<span class="hljs-comment">// 遍历File类对象数组</span><br>		<span class="hljs-keyword">for</span> (File srcFile : listFiles) &#123;<br>			<span class="hljs-comment">// 如果是普通文件。获取文件后缀名</span><br>			<span class="hljs-keyword">if</span> (srcFile.isFile()) &#123;<br>				<br>				String fileName = srcFile.getName();<br>				String upperSuffix = fileName.substring(fileName.lastIndexOf(<span class="hljs-string">&#x27;.&#x27;</span>) + <span class="hljs-number">1</span>)<br>						.toUpperCase();<br>				toBeCreateDir = <span class="hljs-keyword">new</span> File(file, upperSuffix);<br>				<br>			&#125; <span class="hljs-keyword">else</span> &#123;<br>				toBeCreateDir = <span class="hljs-keyword">new</span> File(file, <span class="hljs-string">&quot;subDir&quot;</span>);<br>			&#125;<br>			<br>			<span class="hljs-comment">// 创建文件夹</span><br>			toBeCreateDir.mkdir();<br>			<br>			<span class="hljs-comment">// 移动文件或文件夹</span><br>			srcFile.renameTo(<span class="hljs-keyword">new</span> File(toBeCreateDir, srcFile.getName()));<br>		&#125;<br>		<br>		<span class="hljs-comment">// 创建一个锁文件</span><br>		<span class="hljs-keyword">new</span> File(file, <span class="hljs-string">&quot;1.lock&quot;</span>).createNewFile();<br>	&#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
-
+<h1 id="巨变"><a href="#巨变" class="headerlink" title="巨变"></a>巨变</h1><p>​    窗帘边缘泛着的橘红色光辉就像伊甸园中的禁果一样诱惑着他。</p>
+<p>​    他终于还是拉开窗帘，打开窗户。映入眼帘的是一道穿过前方楼房的耀眼光线，紧接着他就感觉到炽热，狂躁。轻微灼烧感。</p>
+<p>​    像是跟盐酸亲密接触。</p>
+<p>​    不，更像是急匆匆地赶往食堂却在楼道边缠上了微不可见的蜘蛛丝，用手去拨开却依旧粘连在全身。</p>
+<p>​    他想快速地用双手抹过所有有异样感的部位。</p>
+<p>​    可是他做不到，大脑对四肢的控制信号已然丢包，他只能隐约知道不久前还在为双眼抵挡阳光的右手，正在不可抑制地垂落。</p>
+<p>​    像是从高空坠入深海，无处不在的压力在迫使他放弃挣扎，而本能却在脑海中唤醒所有记忆，急速地在大脑中一遍又一遍播放，以求有那么一些影像能够让情绪剧烈波动起来。</p>
+<p>​    良久，浑身酸痛的他躺在地上缓缓睁开双眼，发觉自己全身都被汗水浸湿，脸上还有着泪水。</p>
+<p>​    他缓缓地抬起手，看着自己白得有些透明的皮肤下清晰可见的静脉，感受着自己过于急促的呼吸。回忆着这些年报道的因为接触过于猛烈的阳光而导致残疾甚至死亡的案例，越发觉得现在这个只能生活在黑夜中的世界是多么的残忍。</p>
+<p>​    也许一切都是因为过去人类并不珍惜白天吧。</p>
+<p>​    ……</p>
+<hr>
+<p>​    夜幕降临，喧嚣了一天的蝉鸣不甘的停歇了下来，全市最高建筑的楼顶点亮直射天空的耀眼射灯，用光柱的高度来提醒人们活动时间还有多久，大楼四周的电子幕窗也在程序的控制下浮现出注意事项以及这些天发生的重大新闻。</p>
+<p>​    随着熟悉的开场画面，这座城市迎来了新的一天。</p>
+<p>​    路灯下，行军椅照常摆开着，红黑两方正在楚河汉界边打得热火朝天。</p>
+<p>​    本就睡意不浓的大爷们早就戴好了街道办发的蜂鸣表，在灯柱亮起之时逛起了街道，然后终是聚拢在路灯下的两军厮杀处。</p>
+<p>​    弈者看着围拢过来的好友打着招呼道：“呦，今天陈三来的最早啊。”</p>
+<p>​    “专心下棋，打什么岔呢？到你了。”对面的弈者提醒道。</p>
+<p>​    “你，你怎么能这么下呢？”</p>
+<p>​    “这怎么就不能这么下了？”</p>
+<p>​    “这压马脚了，压马脚了！”</p>
+<p>​    “哦哦哦，没注意，没注意啊！嗯~下在这，哎这就没错了不是。都是你刚才瞎打岔，我才下错的。”</p>
+<p>​    一如往常般的争论不休，也一如往常般的唤醒了整个街区。</p>
+<p>​    理发店的三色灯柱恢复了旋转；便利店的霓虹灯牌闪烁不停；包租婆的窗户也一如往常般“哗”地打开了……</p>
+<p>​    而不远处的学校，随着几声急促的哨声，【晨练】也拉开了帷幕。</p>
+<p>​    更远处，明晃晃的大厅中研究员们正紧张地围在显示器前，等待着发射指令，然后准备更紧张地等待发射结果。</p>
+<p>​    城市地底，停歇了15个小时的大型掘进车也正在发动机的鼓舞下缓缓开动，继续这一天的掘进任务。</p>
+<p>​    “李老，不是我说，你也该歇歇了。”包租婆抖散衣物远远地说道。</p>
+<p>​    “就是！你个臭棋篓子，百来岁了还占着位子，也该让后面的年轻人试试了，他们可都看着心痒痒。”跟李老对弈的刘大爷说道。</p>
+<p>​    “哼，我虽然年龄大了些，可我不像你，出来下个棋都要在房间里慢悠悠地，照我说呀，该是你个刘老头该去休息了。”一边说着李大爷眼手不停，“嗨！吃你个过河兵！”</p>
+<p>​    “嗨，这老头！吃个兵，还真就嘚瑟上了，看我不把你杀个片甲不留。”说着刘大爷移动红車向前威胁黑将。</p>
+<p>​    “嘭——”远处的天空炸开了一朵耀眼的花，炸开的花瓣冒着烟依着定律不规则的坠落，落入远处的群山中。</p>
+<p>​    看着那犹如莲花根般弯弯绕绕的轨迹云刘老面露喜色，说道：“看样子要比以前飞的高。 ”</p>
+<p>​    “可是再高又有什么用呢，不能解决那无规则变化的电磁干扰，哪怕飞出去了，也就是块废铁，何况这还没飞出去呢。真希望外太空有高文明能帮帮我们。”</p>
+<p>​    “帮，是不用想了的。把我们当奴隶，以自由换生存倒有可能。”</p>
+<p>​    “哎。”</p>
+<p>​    听着周围一声声的叹息，李老忍不住训了起来：“叹什么气啊，我个糟老头子都没你们这些人暮气重，还当奴隶，这么快就放弃了？现在再困难，有百年前困难吗？百年前我们共产党人能创造一个又一个的奇迹，你就不能说现在就不行了，再说了不就是太阳被射了一箭嘛，银河系又不是只有太阳这一个恒星，我们也不一定就需要太阳，丧啥！”</p>
+<p>​    而此时的发射中心，并没有沮丧，研究员盯着各自面前的屏幕上跳动的详细数据，不时抬起头看前方循环播放的由【万和AI】分析并模拟生成的参数轨迹对照投射影像，不时在笔记本上记录着。</p>
+<p>​    过了一会，指挥官示意大家先停一下：“大家也知道，现在的对照影像数据主要来自地面站，而更加详细的影像大概要等黑匣子送来来才能获得。【万和】现在分析得到的原因跟前几次差不多，还是主要在电离层受到的干扰，据轨道来看的话这一次保持设定轨迹的时间要比之前几次都要久。不知道是电离层正在趋向于正常，还是设计上的改良，抑或者就只是单纯的运气好而已……当然了等到黑匣子送到，第一个检查的还是有没有人为的错误。那么现在大家有什么想法，都互相讨论一下吧？”</p>
+<p>​    说着，指挥官便走了下来，偶尔在几处讨论激烈的地方停留询问。</p>
+<p>​    指挥大厅的一角，王磊对旁边的人说道：“段星，我觉得我们欠缺的是整体的科技水平。”</p>
+<p>​    “我倒更倾向于是设计路径上的问题。”被叫到的人依旧盯着位于前方的投影，停顿了一下接着说道：“嗯，毕竟我们现在还没有打算载人航天，也许我们可以试着用电磁轨道的方式发射一下。”</p>
+<p>​    “火箭现在倒是不缺，要是我们做出详细的方案，倒是可以提出来试一下。不过这发射就成了大问题，现在的发射架恐怕不能用了吧。”</p>
+<p>​    许是两人间讨论的热烈，旁边一人也加入了进来：“要真确定方案，设施上的问题就不是问题了。根据观测，这十年太阳的情况有在向正常演变，但这种自然的演变过程在没有外物干扰的情况下，起码得两百年才能把对地球的影响降至微乎其微。而以我们目前的情况而言，其实更加应该把科研力量用在可控核聚变上，只有继续发展可控核聚变我们才能真正掌握自己的命运。所以，要我说啊，我们现在就没有必要发射，不，是没有必要那么密集的发射，太浪费了。虽然现在我们已经掌握并在建第一代可控核聚变，但这远远不够啊。”</p>
+<p>​    段星说道：“确实，前不久我看期刊报道。上面说，要想搞清楚巨变的具体成因以及解决办法，我们也许只有通过真正意义上的模拟太阳才能做到了。这太难了，不是叠人数就能解决的事。现在我们不停地发射、失败、再发射，除了想试着用‘两条腿走路’，也是想用这种明显的方式告诉所有人，我们仍然在战斗。”</p>
+<p>​    ……</p>
+<hr>
+<p>​    又是新的一夜，工程师们正在紧张的检查电磁发射架以及火箭的状况，随后撤离到安全区域，等待着发射信号。</p>
+<p>​    而老大爷们揣着手机外放着音乐走在微热的地面上，</p>
+<p>​    “老李，你快点！我棋子都要摆好了。”声音从身后传来，刘大爷拎着几年前退休时倒腾旧物翻出来的大木头棋子，对着还在家里磨磨蹭蹭的老冤家颇有些怨言。</p>
+<p>​    “你个老李，是不是下不过我，都不想出来了呀！”</p>
+<p>​    李大爷夹着把行军椅背身关门没好气地说道：“嗨！你个刘老头，我给你拿了把椅子，你连这点功夫也等不急？就你这心态还下啥棋，回家继续睡大觉吧。”</p>
+<p>​    李大爷急忙忙地走到路灯下一看，坑坑洼洼的青砖上只有用石灰石磨出的线条，棋子还在刘大爷身边的篮子里散乱的垒着，刘大爷坐在行军椅上双手在裤腿上擦拭着，显然也是刚到。</p>
+<p>​    “嗨！我说刘老头啊，刘老头，你棋都没摆好你催啥催。”</p>
+<p>​    “嗨，要不是我催你，你现在还在屋里坐在床边，抱着把椅子，动都不会动一下。”刘大爷摆摆手说道，“行了行了快点坐下来，下棋下棋。”</p>
+<p>​    “好好好。”</p>
+<p>​    远处，轰鸣声响起，高飞了一段的火箭，点燃了它的燃料室，迸射出耀眼的火焰，划破了浓厚的黑夜，笔直的向上飞去。</p>
 
             </div>
             <hr>
@@ -263,7 +297,7 @@
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/Java%E5%AE%9E%E7%94%A8Code/">Java实用Code</a>
+                      <a class="hover-with-bg" href="/categories/%E5%B0%8F%E8%AF%B4/">小说</a>
                     
                   </div>
                 
@@ -271,13 +305,11 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/Code/">Code</a>
+                      <a class="hover-with-bg" href="/tags/%E7%A7%91%E5%B9%BB/">科幻</a>
                     
-                      <a class="hover-with-bg" href="/tags/Java/">Java</a>
+                      <a class="hover-with-bg" href="/tags/%E7%9F%AD%E7%AF%87%E5%B0%8F%E8%AF%B4/">短篇小说</a>
                     
-                      <a class="hover-with-bg" href="/tags/Learn/">Learn</a>
-                    
-                      <a class="hover-with-bg" href="/tags/%E5%AE%9E%E7%94%A8/">实用</a>
+                      <a class="hover-with-bg" href="/tags/%E5%B0%9D%E8%AF%95/">尝试</a>
                     
                   </div>
                 
@@ -294,18 +326,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2021/05/25/Hexo%E4%BD%BF%E7%94%A8/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Hexo使用</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/05/25/hello-world/">
-                        <span class="hidden-mobile">Hello World</span>
+                      <a href="/2021/06/05/%E6%97%B6%E9%97%B4%E6%B5%B7/">
+                        <span class="hidden-mobile">时间海</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
