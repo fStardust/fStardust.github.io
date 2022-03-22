@@ -2,7 +2,7 @@
 title:  自写MyArrayList
 date:  2021/5/21
 categories:  Java Learn
-tags:  Code,Java,Learn
+tags:  [Code,Java,Learn]
 keywords:  Java,集合,数据操作
 ---
 

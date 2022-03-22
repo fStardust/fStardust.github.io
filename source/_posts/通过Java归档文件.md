@@ -1,7 +1,7 @@
 ---
 title:  通过Java归档文件
 categories:  Java实用Code
-tags:  Code,Java,Learn,实用
+tags:  [Code,Java,Learn,实用]
 keywords:  Java,文件操作,实用
 index_img: #/img/example.jpg -- 文章首页封面图
 banner_img: /img/post_banner.jpg -- 文章页顶部大图
